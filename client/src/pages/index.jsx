@@ -9,6 +9,10 @@ let Index = () => {
     const data = useContext(messageContext)
     const {flashMessage} = useContext(messageContext)
 
+    useEffect(()=>{
+        getdata()
+    } , [])
+
     const getdata = async () => {
         try{
             const response = await axios.get('/index')
@@ -16,14 +20,9 @@ let Index = () => {
                 setCategories(response.data.categories)
             }
         }catch(err){
-            console.log(err.message)
             flashMessage("error" , err.message)
         }
     }
-
-    useEffect(()=>{
-        getdata()
-    } , [])
 
     return <>
         <main className="h-[99%] w-[99%] bg-[rgb(237,237,237)] justify-self-center font-[Arial, Helvetica, sans-serif] bg-[url('../images/indexPageImages/azbackground.jpg')] bg-top bg-no-repeat">

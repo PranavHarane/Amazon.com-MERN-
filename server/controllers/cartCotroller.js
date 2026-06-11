@@ -29,9 +29,15 @@ let addToCart = async (req , res ) => {
         }
         user.cart.push(req.params.productId);
         await user.save();
-        res.json({message : "product added to cart." , type : "success"});
+        res.json({
+            message : "product added to cart." ,
+            type : "success"
+        });
     }catch(err){
-        res.send({message : err.message , type : "error"});
+        res.send({
+            message : err.message ,
+            type : "error"
+        });
     }
 }
 
@@ -47,9 +53,15 @@ let deleteFromCart = async (req , res ) => {
         const products = await productModel.find({
             _id : { $in : user.cart}
         })
-        res.json({ message : 'Product is removed from cart' , type : "success" , products});
+        res.json({
+            message : 'Product is removed from cart' , 
+            type : "success" , products
+        });
     }catch(err){
-        res.json({message : err.message , type : "error"});
+        res.json({
+            message : err.message , 
+            type : "error"
+        });
     }
 }
 

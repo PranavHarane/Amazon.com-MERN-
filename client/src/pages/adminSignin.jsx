@@ -25,7 +25,8 @@ let AdminSignin = () => {
         try{
             const response = await axios.post(
                 '/admin/adminSignin' , 
-                formData)
+                formData
+            )
             flashMessage(response.data.type , response.data.message)
 
             setFormData({
@@ -38,7 +39,6 @@ let AdminSignin = () => {
             }
 
         }catch(err){
-            console.log(err.message)
             flashMessage("error" , err.message)
         }
     }

@@ -13,7 +13,6 @@ let Header = () => {
         try{
             navigate(`/searchedProductPage?brand=${productBrand}`)
         }catch(err){
-            console.log(err.message)
             flashMessage("error" , err.message)
         }
     }

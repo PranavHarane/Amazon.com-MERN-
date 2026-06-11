@@ -28,7 +28,9 @@ module.exports = async (req , res ) => {
 
         res.json({ products : products });
     }catch(err){
-        console.log(err.message)
-        res.json({message : err.message , type : "error"});
+        res.json({
+            message : err.message , 
+            type : "error"
+        });
     }
 }

@@ -27,18 +27,12 @@ const EditProductPage = () => {
     const getdata = async () => {
         try{
             const response = await axios.get(`/product/editProductPage/${productId}`)
-            console.log(response)
             setProduct(response.data?.product)
-
             if(!response.data.product){
-                console.log("redireacted from editProductPage")
                 navigate('/owner/signup')
             }
-
             flashMessage(response.data.type , response.data.message)
-
         }catch(err){
-            console.log(err.message)
             flashMessage("error" , err.message)
         }
     }
@@ -58,7 +52,6 @@ const EditProductPage = () => {
             }
 
         }catch(err){
-            console.log(err)
             flashMessage("error" , err.message)
         }
     }

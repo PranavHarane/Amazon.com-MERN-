@@ -13,6 +13,10 @@ const DetailedProduct = () => {
     const [currentSize , setCurrentSize] = useState('')
     const [currentStyle , setCurrentStyle] = useState('')
 
+    useEffect(()=>{
+        getdata()
+    } , [])
+
     const getdata = async () => {
         try{
             const response = await axios.get(`/product/detailedProduct/${params.productId}`)
@@ -22,16 +26,10 @@ const DetailedProduct = () => {
                 setCurrentSize(response.data.product.size?.[0])
                 setCurrentStyle(response.data.product.style?.[0])
             }
-            console.log(response.data.product)
         }catch(err){
-            console.log(err.message)
             flashMessage("error" , err.message)
         }
     }
-
-    useEffect(()=>{
-        getdata()
-    } , [])
 
     return (
     <>

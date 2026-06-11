@@ -1,7 +1,6 @@
 const imagekit = require('../config/imagekit')
 const categoryModel = require("../models/categoryModel");
 
-
 module.exports.createCategory = async (req , res) => {
     try{
         let { brand , heading , tag } = req.body;

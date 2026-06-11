@@ -28,15 +28,12 @@ const CreateProductPage = () => {
     const getdata = async () => {
         try{
             const response = await axios.get('/product/createProductPage')
-
             if(response.data.admin){
                 navigate('/createProductPage')
             }else{
-                console.log("redireacted from createdProductPage")
                 navigate('/owner/signup')
             }
         }catch(err){
-            console.log(err.message)
             flashMessage("error" , err.message)
         }
     }
@@ -72,7 +69,6 @@ const CreateProductPage = () => {
 
             flashMessage(response.data.type , response.data.message)
         }catch(err){
-            console.log(err.message)
             flashMessage("error" , err.message)
         }
     } 

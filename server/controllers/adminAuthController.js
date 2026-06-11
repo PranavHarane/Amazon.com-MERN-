@@ -8,7 +8,10 @@ const adminSignup = async (req , res) => {
         let { fullname , email , password } = req.body;
 
         if(!fullname || !email || !password){
-            return res.json({ message : "fill all boxes." , type : "warn"});
+            return res.json({ 
+                message : "fill all boxes." , 
+                type : "warn"
+            });
         }
 
         const hash = await bcrypt.hash(password , 10)
@@ -21,10 +24,16 @@ const adminSignup = async (req , res) => {
 
         let token = generateToken(admin);
         res.cookie("token" , token);
-        res.status(201).json({ message : "Admin account created successfully." , type : "success"});    
+        res.status(201).json({ 
+            message : "Admin account created successfully." , 
+            type : "success"
+        });    
             
     }catch(err){
-        res.send({message : err.messege , type : "error"});
+        res.json({
+            message : err.messege , 
+            type : "error"
+        });
     }
 }
 
@@ -33,19 +42,28 @@ const adminSignin = async (req , res)=> {
         let { email , password } = req.body;
         
         if(!email || !password){
-            return res.json({ message : 'Fill all the boxes.' , type : "warn"});
+            return res.json({ 
+                message : 'Fill all the boxes.' , 
+                type : "warn"
+            });
         }
 
         let admin = await adminModel.findOne({email});
 
         if(!admin){
-            return res.json({ message : 'Signup first' , type : "info"});
+            return res.json({ 
+                message : 'Signup first' , 
+                type : "info"
+            });
         }
 
         const isPassCorrect = await bcrypt.compare(password , admin.password )
 
         if(isPassCorrect === false){
-            return res.json({ message : "Invalid Credentials." , type : "warn"});
+            return res.json({ 
+                message : "Invalid Credentials." , 
+                type : "warn"
+            });
         }
 
         let token = generateToken(admin);
@@ -63,7 +81,10 @@ const adminSignin = async (req , res)=> {
 
 const adminSignout = async (req , res) => {
     res.clearCookie("token");
-    res.json({ message : "Log out successfully." , type : "success"})
+    res.json({ 
+        message : "Log out successfully." , 
+        type : "success"
+    })
 }
 
 const deleteAccount = async (req , res) => {
@@ -72,9 +93,15 @@ const deleteAccount = async (req , res) => {
         let info = jwt.verify(token , process.env.JWT_SECRET);
         let email = info.email;
         let admin = await adminModel.findOneAndDelete({ email });
-        res.json({ message : 'Account deleted successfully.' , type : "success"})
+        res.json({ 
+            message : 'Account deleted successfully.' , 
+            type : "success"
+        })
     }catch(err){
-        res.json({message : err.message , type : "error"});
+        res.json({
+            message : err.message , 
+            type : "error"
+        });
     }
 }
 

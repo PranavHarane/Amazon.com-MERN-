@@ -26,24 +26,19 @@ let Signup = () => {
             if(formData.fullname.length < 5 || formData.password.length < 5){
                 return flashMessage( "warn" , "minimum length must be required.")
             }
-            
             const response = await axios.post(
                 '/user/userSignup' , 
                 formData)
-            console.log(response)
 
             setFormData({
                 fullname : '',
                 email : '' ,
                 password : ''
             })
-
             navigate('/')
             flashMessage(response.data.type , response.data.message)
-
         }catch(err){
             flashMessage("error" , err.message)
-            console.log(err)
         } 
     }
 

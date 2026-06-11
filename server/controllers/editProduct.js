@@ -10,9 +10,15 @@ module.exports = async (req , res) => {
             { new : true , runValidators : true}
         )
 
-        res.status(200).json({message : 'Product updated successfully.' , type : "success"});
+        res.status(200).json({
+            message : 'Product updated successfully.' , 
+            type : "success"
+        });
 
     }catch(err){
-        res.json({message: err.message , type : "error"})
+        res.json({
+            message: err.message , 
+            type : "error"
+        })
     }
 }

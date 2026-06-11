@@ -22,12 +22,9 @@ const CreateCategoryPage = () => {
             if(response.data.admin){
                 navigate('/createCategoryPage')
             }else{
-                console.log("redireacted from CreatedCategoryPage")
                 navigate('/owner/signup')
             }
-
         }catch(err){
-            console.log(err.message)
             flashMessage("error" , err.message)
         }
     }
@@ -58,7 +55,6 @@ const CreateCategoryPage = () => {
             flashMessage(response.data.type , response.data.message)
 
         }catch(err){
-            console.log(err.message)
             flashMessage("error" , err.message)
         }
     }

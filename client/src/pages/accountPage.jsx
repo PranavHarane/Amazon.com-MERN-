@@ -1,7 +1,6 @@
 import { useEffect , useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link , useNavigate } from "react-router-dom";
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
 import { messageContext } from "../context/flashMessageContext";
 
 let AccountPage = () => {
@@ -23,7 +22,6 @@ let AccountPage = () => {
             }
         }catch (err) {
             flashMessage("error" , err.message)
-            console.log(err)
         }
     }
 
@@ -33,7 +31,6 @@ let AccountPage = () => {
             flashMessage(response.data.type , response.data.message)
         }catch(err){
             flashMessage("error" , err.message)
-            console.log(err.message)
         }
     }
 
@@ -42,7 +39,6 @@ let AccountPage = () => {
             const response = await axios.get('/user/deleteAccount')
             flashMessage(response.data.type , response.data.message)
         }catch(err){
-            console.log(err.message)
             flashMessage("error" , err.message)
         }
     }

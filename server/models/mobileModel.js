@@ -1,9 +1,18 @@
 const mongoose = require("mongoose");
 
 const mobileSchema = mongoose.Schema({
-    image : String,
-    description : String,
-    brandURL : String,
+    image : {
+        type : String ,
+        required : true
+    } ,
+    description : {
+        type : String ,
+        required : true
+    } ,
+    brandURL : {
+        type : String ,
+        required : true
+    } ,
     ratings : {
         type : Number,
         default : 0
@@ -12,29 +21,54 @@ const mobileSchema = mongoose.Schema({
         type : Number,
         default : 0
     },
-    price : Number,
+    price : {
+        type : Number ,
+        required : true
+    } ,
     color : {
-        type : Array
+        type : Array ,
+        required : true
     }
     ,
     size : {
-        type : Array
+        type : Array ,
+        required : true
     },
     style : {
-        type : Array
+        type : Array ,
+        required : true
     },
     patternName : {
         type : String,
         default : "Phone only"
     },
-    brandName : String,
-    operatingSystem : String,
-    ramMemory : String,
-    CPUModel : String,
-    CPUSize : String,
-    memoryStorage : String,
+    brandName : {
+        type : String ,
+        required : true
+    },
+    operatingSystem : {
+        type : String ,
+        required : true
+    },
+    ramMemory : {
+        type : String ,
+        required : true
+    },
+    CPUModel : {
+        type : String ,
+        required : true
+    },
+    CPUSize : {
+        type : String ,
+        required : true
+    },
+    memoryStorage : {
+        type : String ,
+        required : true
+    },
     aboutItem : {
-        type : Array
+        type : Array ,
+        required : true
     }
 });
 

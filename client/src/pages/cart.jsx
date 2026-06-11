@@ -12,16 +12,14 @@ let Cart = () => {
     const getdata = async () => {
         try{
             const response = await axios.get('/user/cart')
-            console.log(response)
             if(!response?.data?.user){
                 navigate('/signin')
             }
             if(response?.data?.products.length > 0){
                 setProducts(response.data.products)
             }
-
         }catch(err){
-            console.log(err)
+            flashMessage("error" , err.message)
         }
     }
 
@@ -31,7 +29,6 @@ let Cart = () => {
             setProducts(response.data.products)
             flashMessage(response.data.type , response.data.message)  
         }catch(err){
-            console.log(err.message)
             flashMessage("error" , err.message)
         }
     }

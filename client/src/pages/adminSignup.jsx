@@ -42,7 +42,6 @@ let AdminSignup = () => {
             navigate('/owner/signin')
 
         }catch(err){
-            console.log(err.message)
             flashMessage("error" , err.message)
         }
     }
