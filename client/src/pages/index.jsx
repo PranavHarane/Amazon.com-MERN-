@@ -15,7 +15,7 @@ let Index = () => {
 
     const getdata = async () => {
         try{
-            const response = await axios.get(`${VITE_API_URL}/index`)
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/index`)
             if(response.data.categories){
                 setCategories(response.data.categories)
             }
