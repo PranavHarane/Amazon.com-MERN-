@@ -10,19 +10,19 @@ export default defineConfig({
   server: {
     proxy: {
       '/index': {
-        target: 'http://localhost:3000',
+        target: 'https://amazon-com-mern.onrender.com',
         changeOrigin: true,
       } ,
       '/product': {
-        target: 'http://localhost:3000',
+        target: 'https://amazon-com-mern.onrender.com',
         changeOrigin: true,
       } ,
       '/user': {
-        target: 'http://localhost:3000',
+        target: 'https://amazon-com-mern.onrender.com',
         changeOrigin: true,
       } ,
       '/admin': {
-        target: 'http://localhost:3000',
+        target: 'https://amazon-com-mern.onrender.com',
         changeOrigin: true,
       } 
     }
