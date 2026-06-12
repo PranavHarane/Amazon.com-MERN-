@@ -72,7 +72,7 @@ module.exports.userSignin = async (req , res) => {
             let token = generateToken(user);
             res.cookie("token" , token).json({ 
                 message : "Logged in successfully" , 
-                type : "success" , token
+                type : "success" 
             });
         }else{
             res.json({ 

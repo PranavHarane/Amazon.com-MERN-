@@ -6,8 +6,9 @@ module.exports = async (req , res , next) => {
     let token = req.cookies.token;
     if(!token){
         return res.json({ 
-            message : "Signin first to add products to cart." ,
-            type : "info"
+            message : "Signin first." ,
+            type : "info" ,
+            token : token
         });
     }
 

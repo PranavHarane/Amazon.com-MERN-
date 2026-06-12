@@ -28,7 +28,6 @@ let Signin = () => {
                 `${import.meta.env.VITE_API_URL}/user/userSignin` ,
                 formData
                 )
-            console.log(response)
 
             setFormData({
                 email : '' ,
@@ -36,7 +35,7 @@ let Signin = () => {
             })
 
             if(response.data.type == "success"){
-                navigate('/')
+                navigate('/accountPage')
             }
             flashMessage(response.data.type , response.data.message)
             
