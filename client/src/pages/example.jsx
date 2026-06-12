@@ -6,7 +6,7 @@ const example = () => {
 
     const getdata = async (req , res) => {
         try{
-            const response = await axios.post('/index/ai' , {
+            const response = await axios.post(`${import.meta.env.VITE_API_URL}/index/ai` , {
                 text : "best mobiles for gaming"
             })
 

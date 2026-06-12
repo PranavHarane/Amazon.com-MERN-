@@ -27,7 +27,7 @@ const CreateProductPage = () => {
 
     const getdata = async () => {
         try{
-            const response = await axios.get('/product/createProductPage')
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/product/createProductPage`)
             if(response.data.admin){
                 navigate('/createProductPage')
             }else{
@@ -46,7 +46,7 @@ const CreateProductPage = () => {
             formData.append('image' , image)
             formData.append('info' , JSON.stringify(info))
 
-            const response = await axios.post('/product/createProduct' , formData)
+            const response = await axios.post(`${import.meta.env.VITE_API_URL}/product/createProduct` , formData)
 
             setImage(null)
             setInfo({

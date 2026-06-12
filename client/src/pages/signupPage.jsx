@@ -27,7 +27,7 @@ let Signup = () => {
                 return flashMessage( "warn" , "minimum length must be required.")
             }
             const response = await axios.post(
-                '/user/userSignup' , 
+                `${import.meta.env.VITE_API_URL}/user/userSignup` , 
                 formData)
 
             setFormData({

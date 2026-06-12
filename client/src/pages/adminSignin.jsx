@@ -24,7 +24,7 @@ let AdminSignin = () => {
         e.preventDefault()
         try{
             const response = await axios.post(
-                '/admin/adminSignin' , 
+                `${import.meta.env.VITE_API_URL}/admin/adminSignin` , 
                 formData
             )
             flashMessage(response.data.type , response.data.message)

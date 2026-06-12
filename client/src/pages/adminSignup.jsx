@@ -30,7 +30,7 @@ let AdminSignup = () => {
             }
 
             const response = await axios.post(
-                '/admin/adminSignup' ,
+                `${import.meta.env.VITE_API_URL}/admin/adminSignup` ,
                 formData
             )
             setFormData({

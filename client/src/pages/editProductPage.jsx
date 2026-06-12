@@ -26,7 +26,7 @@ const EditProductPage = () => {
 
     const getdata = async () => {
         try{
-            const response = await axios.get(`/product/editProductPage/${productId}`)
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/product/editProductPage/${productId}`)
             setProduct(response.data?.product)
             if(!response.data.product){
                 navigate('/owner/signup')
@@ -44,7 +44,7 @@ const EditProductPage = () => {
 
             formData.append('product' , JSON.stringify(product))
 
-            const response = await axios.post(`/product/editProduct/${productId}` , formData)
+            const response = await axios.post(`${import.meta.env.VITE_API_URL}/product/editProduct/${productId}` , formData)
             flashMessage(response.data.type , response.data.message)
 
             if(response.data.type == "success"){

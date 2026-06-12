@@ -9,9 +9,13 @@ let AllCreatedProductPage = () => {
     const {flashMessage} = useContext(messageContext)
     const [products , setProducts] = useState([])
 
+    useEffect(()=>{
+        getdata()
+    } , [])
+
     const getdata = async () => {
         try{
-            const response = await axios.get('/product/allCreatedProductPage');
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/product/allCreatedProductPage`);
             setProducts(response.data.products)
 
             if(!response.data.type == "success"){
@@ -22,10 +26,6 @@ let AllCreatedProductPage = () => {
             flashMessage("error" , err.message)
         }
     }
-
-    useEffect(()=>{
-        getdata()
-    } , [])
     
     return <>
     <div className="h-full w-full">

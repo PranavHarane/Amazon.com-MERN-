@@ -17,7 +17,7 @@ const CreateCategoryPage = () => {
     
     const getdata = async () =>{
         try{
-            const response = await axios.get('/product/createProductPage')
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/product/createProductPage`)
 
             if(response.data.admin){
                 navigate('/createCategoryPage')
@@ -40,7 +40,7 @@ const CreateCategoryPage = () => {
             formdata.append('image' , image)
 
             const response = await axios.post(
-                '/product/createCategory' ,
+                `${import.meta.env.VITE_API_URL}/product/createCategory` ,
                 formdata
             )
 

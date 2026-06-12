@@ -10,7 +10,7 @@ let AdminHeader = () => {
 
     const logoutHandler = async () => {
         try{
-            const response = await axios.get('/admin/adminSignout')
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/admin/adminSignout`)
             flashMessage(response.data.type , response.data.message)
             navigate('/owner/signin')
         }catch(err){
@@ -20,7 +20,7 @@ let AdminHeader = () => {
 
     const deleteAccountHandler = async () => {
         try{
-            const response = await axios.get('/admin/deleteAccount')
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/admin/deleteAccount`)
             flashMessage(response.data.type , response.data.message)
             navigate('/owner/signup')       
         }catch(err){

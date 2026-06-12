@@ -14,7 +14,7 @@ let AccountPage = () => {
 
     const getdata = async () => {
         try{
-            const response = await axios.get('/user/account')
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/user/account`)
             if(response.data.user){
                 navigate('/accountPage')
             }else{
@@ -27,7 +27,7 @@ let AccountPage = () => {
 
     const logoutUser = async () => {
         try{
-            const response = await axios.get('/user/userSignout')
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/user/userSignout`)
             flashMessage(response.data.type , response.data.message)
         }catch(err){
             flashMessage("error" , err.message)
@@ -36,7 +36,7 @@ let AccountPage = () => {
 
     const deleteAccount = async () => {
         try{
-            const response = await axios.get('/user/deleteAccount')
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/user/deleteAccount`)
             flashMessage(response.data.type , response.data.message)
         }catch(err){
             flashMessage("error" , err.message)

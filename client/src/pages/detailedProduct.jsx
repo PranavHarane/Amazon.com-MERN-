@@ -19,7 +19,7 @@ const DetailedProduct = () => {
 
     const getdata = async () => {
         try{
-            const response = await axios.get(`/product/detailedProduct/${params.productId}`)
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/product/detailedProduct/${params.productId}`)
             if(response?.data?.product){
                 setProduct(response.data.product)
                 setCurrentColor(response.data.product.color?.[0])

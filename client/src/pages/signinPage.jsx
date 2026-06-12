@@ -25,7 +25,7 @@ let Signin = () => {
         e.preventDefault()
         try{
             const response = await axios.post(
-                '/user/userSignin' ,
+                `${import.meta.env.VITE_API_URL}/user/userSignin` ,
                 formData
                 )
             console.log(response)
@@ -42,7 +42,6 @@ let Signin = () => {
             
         }catch(err){
             flashMessage("error" , err.message)
-            console.log(err.message)
         }
     }
 

@@ -11,7 +11,7 @@ let Cart = () => {
 
     const getdata = async () => {
         try{
-            const response = await axios.get('/user/cart')
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/user/cart`)
             if(!response?.data?.user){
                 navigate('/signin')
             }
@@ -25,7 +25,7 @@ let Cart = () => {
 
     const deleteFromCart = async (productId) => {
         try{
-            const response = await axios.get(`/user/deleteFromCart/${productId}`)
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/user/deleteFromCart/${productId}`)
             setProducts(response.data.products)
             flashMessage(response.data.type , response.data.message)  
         }catch(err){

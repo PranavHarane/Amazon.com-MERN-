@@ -17,7 +17,7 @@ let SearchedProductPage = () => {
 
     const getdata = async () => {
         try{
-            const response = await axios.get(`/product/searchProduct?searchValue=${searchValue}`)
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/product/searchProduct?searchValue=${searchValue}`)
             if(response.data.type == "error"){
                 flashMessage("error" , response.data.message)
             }
@@ -25,7 +25,6 @@ let SearchedProductPage = () => {
                 setProducts(response.data.products)
             }
         }catch(err){
-            console.log(err.message)
             flashMessage("error" , err.message)
         }
     }
@@ -33,14 +32,13 @@ let SearchedProductPage = () => {
     const addToCart = async (e , id) => {
         e.preventDefault()
         try{
-            const response = await axios.get(`/user/addToCart/${id}`)
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/user/addToCart/${id}`)
             if(!response.data?.type == "success"){
                 Navigate('/signin')
             }
             flashMessage(response.data.type , response.data.message)
 
         }catch(err){
-            console.log(err.message)
             flashMessage("error" , err.message)
         }
     }
