@@ -1,7 +1,7 @@
 import axios from "axios";
+axios.defaults.withCredentials = true
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import {toast , ToastContainer} from 'react-toastify'
 import { messageContext } from "../context/flashMessageContext";
 
 let Signin = () => {
@@ -26,7 +26,7 @@ let Signin = () => {
         try{
             const response = await axios.post(
                 `${import.meta.env.VITE_API_URL}/user/userSignin` ,
-                formData
+                formData 
                 )
 
             setFormData({

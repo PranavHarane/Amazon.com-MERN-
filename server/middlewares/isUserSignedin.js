@@ -7,8 +7,7 @@ module.exports = async (req , res , next) => {
     if(!token){
         return res.json({ 
             message : "Signin first." ,
-            type : "info" ,
-            token : token
+            type : "info" 
         });
     }
 

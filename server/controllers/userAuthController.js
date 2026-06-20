@@ -2,6 +2,7 @@ const bcrypt = require("bcrypt");
 const userModel = require("../models/userModel");
 const { generateToken } = require("../utils/generateToken");
 const jwt = require("jsonwebtoken");
+const sentToken = require('../utils/sentToken')
  
 module.exports.userSignup = async (req , res) => {
     try{
@@ -32,7 +33,7 @@ module.exports.userSignup = async (req , res) => {
         });
 
         let token = generateToken(user);
-        res.cookie("token" , token);
+        sentToken(res , token);
         res.status(201).json({
             message : "User created successfully." , 
             type : "success"
@@ -70,7 +71,8 @@ module.exports.userSignin = async (req , res) => {
 
         if(result){
             let token = generateToken(user);
-            res.cookie("token" , token).json({ 
+            sentToken(res , token)
+            res.json({ 
                 message : "Logged in successfully" , 
                 type : "success" 
             });
@@ -90,7 +92,7 @@ module.exports.userSignin = async (req , res) => {
 }
 
 module.exports.userSignout = (req , res) => {
-    res.clearCookie("token");
+    sentToken(res , "")
     res.json({ 
         message : 'Log out successfully.' , 
         type : "success"
@@ -102,7 +104,7 @@ module.exports.deleteAccount = async (req , res) => {
         let token = req.cookies.token;
         let userInfo = jwt.verify(token , process.env.JWT_SECRET);
         let user = await userModel.findOneAndDelete({email : userInfo.email});
-        res.clearCookie("token");
+        sentToken(res , "")
         res.json({
             message : "Your account is deleted succesfully." , 
             type : "success"

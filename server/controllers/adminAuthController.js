@@ -2,6 +2,7 @@ const adminModel = require("../models/adminModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { generateToken } =require("../utils/generateToken");
+const sentToken = require("../utils/sentToken");
 
 const adminSignup = async (req , res) => {
     try{
@@ -23,7 +24,7 @@ const adminSignup = async (req , res) => {
         });
 
         let token = generateToken(admin);
-        res.cookie("token" , token);
+        sentToken(res , token)
         res.status(201).json({ 
             message : "Admin account created successfully." , 
             type : "success"
@@ -67,7 +68,7 @@ const adminSignin = async (req , res)=> {
         }
 
         let token = generateToken(admin);
-        res.cookie("token" , token);
+        sentToken(res, token);
         res.status(200).json({ 
             message : "Logged in Successfully." ,
             type : "success" 
@@ -80,7 +81,7 @@ const adminSignin = async (req , res)=> {
 }
 
 const adminSignout = async (req , res) => {
-    res.clearCookie("token");
+    sentToken(res , "");
     res.json({ 
         message : "Log out successfully." , 
         type : "success"
@@ -93,6 +94,7 @@ const deleteAccount = async (req , res) => {
         let info = jwt.verify(token , process.env.JWT_SECRET);
         let email = info.email;
         let admin = await adminModel.findOneAndDelete({ email });
+        sentToken(res , "")
         res.json({ 
             message : 'Account deleted successfully.' , 
             type : "success"

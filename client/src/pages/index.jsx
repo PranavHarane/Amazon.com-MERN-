@@ -20,6 +20,7 @@ let Index = () => {
                 setCategories(response.data.categories)
             }
         }catch(err){
+            console.log(err)
             flashMessage("error" , err.message)
         }
     }
@@ -29,7 +30,7 @@ let Index = () => {
         <section className="h-[22vh] w-full flex justify-center items-end">
             <div className="w-[96%] text-[10px] bg-white flex justify-center items-center p-1.25 mb-5 md:text-[14px]">
                 <p>You are on amazon.com. You can also shop on Amazon India for millions of products with fast local delivery.</p>
-                <Link to='' className="text-[rgb(41,123,194)] decoration-0 ml-1.25">Click here to go to amazon.in</Link>
+                <Link to='https://www.amazon.in/' target="_main" className="text-[rgb(41,123,194)] decoration-0 ml-1.25">Click here to go to amazon.in</Link>
             </div>
         </section>
         <section className="h-auto w-full flex flex-wrap gap-3.75 justify-center pb-4">

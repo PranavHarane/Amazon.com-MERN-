@@ -10,8 +10,9 @@ let cart = async (req ,res)=>{
         
         res.status(200).json({user , products})
     }catch(err){
-        console.log(err.message)
-        res.json({message : err.message})
+        res.json({
+            message : err.message
+        })
     }
 }
 
@@ -55,7 +56,8 @@ let deleteFromCart = async (req , res ) => {
         })
         res.json({
             message : 'Product is removed from cart' , 
-            type : "success" , products
+            type : "success" , 
+            products
         });
     }catch(err){
         res.json({

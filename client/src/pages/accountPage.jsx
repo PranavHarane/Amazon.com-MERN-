@@ -14,8 +14,7 @@ let AccountPage = () => {
 
     const getdata = async () => {
         try{
-            const response = await axios.get(`${import.meta.env.VITE_API_URL}/user/account`)
-            console.log(response)
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/user/account` )
             if(response.data.user){
                 navigate('/accountPage')
             }else{
