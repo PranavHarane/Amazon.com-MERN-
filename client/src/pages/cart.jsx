@@ -15,9 +15,10 @@ let Cart = () => {
             if(!response?.data?.user){
                 navigate('/signin')
             }
-            if(response?.data?.products.length > 0){
+            if(response.data?.products?.length > 0){
                 setProducts(response.data.products)
             }
+            flashMessage(response.data.type , response.data.message)
         }catch(err){
             flashMessage("error" , err.message)
         }

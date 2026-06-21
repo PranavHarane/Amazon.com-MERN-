@@ -45,12 +45,12 @@ let Header = () => {
                 <div className="flex justify-center items-center gap-4 sm:hidden">
                     <div className="flex justify-center itmes-center text-[16px]">
                         <p className="mt-1">Sign in <span className="mx-[-4px_-4px]"><i className="fa-solid fa-angle-right"></i></span></p>
-                        <span className="text-[22px]"><i className="fa-solid fa-user"></i></span>
+                        <Link to='/signin' className="text-[22px] cursor-pointer"><i className="fa-solid fa-user"></i></Link>
                     </div>
-                <Link to='/cart' className="flex flex-col justify-center items-center text-white decoration-0">
-                    <span className="text-[22px]"><i className="fa-solid fa-cart-shopping"></i></span>
-                    <p className="font-bold text-[10px] -mt-2">Cart</p>
-                </Link>
+                    <Link to='/cart' className="flex flex-col justify-center items-center text-white decoration-0">
+                        <span className="text-[22px]"><i className="fa-solid fa-cart-shopping"></i></span>
+                        <p className="font-bold text-[10px] -mt-2">Cart</p>
+                    </Link>
                 </div>
             </div>
             <div className="h-fit w-full">

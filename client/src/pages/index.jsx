@@ -20,7 +20,6 @@ let Index = () => {
                 setCategories(response.data.categories)
             }
         }catch(err){
-            console.log(err)
             flashMessage("error" , err.message)
         }
     }

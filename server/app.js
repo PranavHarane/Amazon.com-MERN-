@@ -26,6 +26,4 @@ app.use("/user" , userRouter);
 app.use("/product" , productRouter);
 app.use("/admin" , adminRouter);
 
-app.listen(PORT , (req , res) =>{
-    console.log("server is running....");
-});
+app.listen(PORT , (req , res) =>{});
